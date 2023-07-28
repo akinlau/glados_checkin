@@ -11,6 +11,8 @@ ql repo https://github.com/akinlau/glados_checkin.git "check_in.py" "backUp|READ
 
 ### 3、新建拉库任务，并执行，刷新浏览器即可看到添加的任务。
 
-### 4、添加GR_COOKIE环境变量（登录https://glados.rocks/，按F12--网络获取）
+### 4、添加GR_COOKIE环境变量（登录https://glados.rocks/，按f12--网络--标头--请求标头--cookie，复制cookie后面的值）
 
-### 5、依赖管理选python新建依赖安装requests
+### 5、添加GR_TOKEN环境变量（登录https://glados.rocks/，按f12--网络--负载--token，复制token后面的值）
+
+### 6、依赖管理选python新建依赖安装requests
