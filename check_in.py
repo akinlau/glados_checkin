@@ -1,7 +1,7 @@
 import requests,json,os,sys
 
 
-# 在青龙面板环境变量添加GR_COOKIE，并登录https://glados.rocks，按f12--网络获取cookie
+# 在青龙面板环境变量添加GR_COOKIE，并登录https://glados.rocks，按f12--网络--标头--请求标头--cookie，复制cookie后面的值
 try:
     if "GR_COOKIE" in os.environ:
         if len(os.environ["GR_COOKIE"]) > 10:
@@ -9,6 +9,15 @@ try:
             print(f"\n当前从环境变量获取CK\n")
 except Exception as e:
     print(f"获取cookie失败：{e}")
+
+# 在青龙面板环境变量添加GR_TOKEN，并登录https://glados.rocks，按f12--网络--负载--token，复制token后面的值
+try:
+    if "GR_TOKEN" in os.environ:
+        if len(os.environ["GR_TOKEN"]) > 6:
+            token = os.environ["GR_TOKEN"]
+            print(f"\n当前从环境变量获取TOKEN\n")
+except Exception as e:
+    print(f"获取TOKEN失败：{e}")
 
 
 def load_send():
@@ -33,7 +42,7 @@ def checkin():
     origin = "https://glados.rocks"
     useragent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.75 Safari/537.36"
     payload={
-        'token': 'glados.one'
+        'token': token
     }
     checkin = requests.post(url,headers={'cookie': cookie ,'referer': referer,'origin':origin,'user-agent':useragent,'content-type':'application/json;charset=UTF-8'},data=json.dumps(payload))
     state =  requests.get(url2,headers={'cookie': cookie ,'referer': referer,'origin':origin,'user-agent':useragent})
